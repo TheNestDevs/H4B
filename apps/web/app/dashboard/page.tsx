@@ -14,15 +14,15 @@ const Dashboard = () => {
         setValue(values[0]);
     };
     return (
-        <div className={"px-20"}>
+        <div className={"px-2 lg:px-20"}>
             <h1 className="heading my-5 text-5xl font-medium text-text-secondary">
                 Your Appointments
             </h1>
-            <div className={"flex"}>
-                <div className="w-3/5 ">
+            <div className={"flex flex-col gap-5 lg:flex-row"}>
+                <div className="w-full lg:w-3/5 ">
                     <Calendar className={"calendar"} value={value} onChange={onAdd as never} />
                 </div>
-                <div className="w-2/5 px-16">
+                <div className="w-full lg:w-2/5 lg:px-16">
                     <div className="bg-text-secondary p-5">
                         <p className="m-0 text-lg text-white">Appointments</p>
                         <p className="m-0 text-3xl text-white">18th May, 2023</p>

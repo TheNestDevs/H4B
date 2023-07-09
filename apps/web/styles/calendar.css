@@ -4,10 +4,10 @@
 }
 
 .react-calendar__month-view__days__day {
-    padding: 10px;
-    /*border-width: 2px !important;*/
-    /*border-style: solid !important;*/
-    /*border-color: rgb(var(--color-accent)) !important;*/
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     aspect-ratio: 2/1;
     margin: 1px;
 }
