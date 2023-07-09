@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile/src/app/router/router.dart';
 
 import '../../../app/theme/theme.dart';
 import 'widgets/dashboard_header.dart';
@@ -16,17 +18,19 @@ class DashboardScreen extends ConsumerWidget {
       body: Column(
         children: [
           const DashboardHeader(),
-          const Center(
+          Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DashboardTile(
                   title: 'Ambulance',
                   image: 'assets/images/ambu.png',
+                  onTap: () => {},
                 ),
                 DashboardTile(
                   title: 'Records',
                   image: 'assets/images/reports.png',
+                  onTap: () => context.push(AppRouterPath.record),
                 ),
               ],
             ),

@@ -41,6 +41,8 @@ dependencies:
   go_router: ^9.0.3
   google_fonts: ^5.1.0
   flutter_screenutil: ^5.8.4
+  dio: ^5.2.1+1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
