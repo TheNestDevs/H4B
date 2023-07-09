@@ -5,8 +5,8 @@ import { cva, VariantProps } from "class-variance-authority";
 const buttonVariants = cva("px-4 py-2", {
     variants: {
         variant: {
-            primary: "rounded bg-primary text-white",
-            secondary: "bg-secondary rounded",
+            primary: "rounded bg-accent text-white",
+            secondary: "bg-primary rounded",
         },
         size: {
             default: "w-min",
