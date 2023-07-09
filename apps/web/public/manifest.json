@@ -1,0 +1,17 @@
+{
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "512x512",
+      "src": "/next.svg",
+      "type": "image/svg"
+    }
+  ],
+  "name": "Medicare",
+  "orientation": "portrait",
+  "short_name": "Medicare",
+  "start_url": "/",
+  "theme_color": "#FFFFFF"
+}
+
