@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile/src/app/theme/theme.dart';
 
 import 'widgets/dashboard_header.dart';
 import 'widgets/dashboard_tile.dart';
@@ -9,11 +12,11 @@ class DashboardScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
-          DashboardHeader(),
-          Center(
+          const DashboardHeader(),
+          const Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -26,6 +29,63 @@ class DashboardScreen extends ConsumerWidget {
                   image: 'assets/images/reports.png',
                 ),
               ],
+            ),
+          ),
+          Center(
+            child: Container(
+              height: 125.h,
+              width: 330.w,
+              decoration: BoxDecoration(
+                color: AppTheme.kTealAccentColor,
+                borderRadius: BorderRadius.circular(15.r),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Appointment due',
+                      style: GoogleFonts.inter(
+                        fontSize: 11.5.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white.withOpacity(0.75),
+                      ),
+                    ),
+                    2.verticalSpace,
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.schedule,
+                          color: Colors.white,
+                          size: 28.w,
+                        ),
+                        10.horizontalSpace,
+                        Text(
+                          '8:30am - 9:00am, Sunday, 9th July 2023',
+                          style: GoogleFonts.inter(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
+                        15.verticalSpace,
+                      ],
+                    ),
+                    8.verticalSpace,
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 27.r,
+                          backgroundColor: Colors.white,
+                        ),
+                        10.horizontalSpace,
+                        const Text('Dr. Koustav Mondal')
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
