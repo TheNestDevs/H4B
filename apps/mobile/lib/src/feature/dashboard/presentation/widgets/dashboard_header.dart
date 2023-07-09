@@ -5,12 +5,15 @@ import 'package:go_router/go_router.dart';
 import 'package:mobile/src/app/router/router.dart';
 
 import '../../../../app/theme/theme.dart';
+import '../../../../provider/global_provider.dart';
 
 class DashboardHeader extends ConsumerWidget {
   const DashboardHeader({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final userName = ref.watch(userNameProvider);
+
     return Container(
       height: 381.h,
       width: 390.w,
@@ -40,10 +43,13 @@ class DashboardHeader extends ConsumerWidget {
                   child: CircleAvatar(
                     foregroundColor: Colors.white70,
                     radius: 28.r,
+                    foregroundImage: const AssetImage(
+                      'assets/images/user.png',
+                    ),
                   ),
                 ),
                 Text(
-                  'Good Morning, Peter',
+                  'Good Morning, \n$userName',
                   style: AppTheme.theme.textTheme.bodyMedium,
                 ),
               ],

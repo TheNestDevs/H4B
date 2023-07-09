@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile/src/app/theme/theme.dart';
 
+import '../../../app/theme/theme.dart';
 import 'widgets/dashboard_header.dart';
 import 'widgets/dashboard_tile.dart';
 
@@ -78,6 +78,9 @@ class DashboardScreen extends ConsumerWidget {
                         CircleAvatar(
                           radius: 27.r,
                           backgroundColor: Colors.white,
+                          foregroundImage: const AssetImage(
+                            'assets/images/doc.png',
+                          ),
                         ),
                         10.horizontalSpace,
                         const Text('Dr. Koustav Mondal')
