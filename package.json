@@ -5,6 +5,11 @@
   "keywords": [
     "h4b2"
   ],
+  "scripts": {
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "turbo lint"
+  },
   "author": {
     "name": "Team Innov8rs"
   },
@@ -13,6 +18,7 @@
     "@bravo68web/prettier-config": "^1.1.2",
     "@bravo68web/tsconfig": "^1.1.2",
     "eslint": "^8.44.0",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "turbo": "^1.10.7"
   }
 }
