@@ -12,6 +12,7 @@ import Button from "@/components/ui/Button";
 const Dashboard = () => {
     const [value, setValue] = useState(new Date());
     const [data, setData] = useState<IAppointments[]>([]);
+    const [current, setCurrent] = useState<IAppointments | null>(null);
 
     const onAdd = (...values: never[]) => {
         setValue(values[0]);
@@ -22,7 +23,20 @@ const Dashboard = () => {
     };
     const fetchData = async () => {
         const { data } = await axios.get("https://5b91-203-171-240-120.ngrok-free.app/apt");
-        setData(data.appointments);
+        setData(
+            data.appointments.filter((item: IAppointments) => {
+                // console.log(new Date(), new Date(item.apt_start));
+
+                if (new Date(item.apt_start) < new Date()) {
+                    if (new Date() < new Date(item.apt_end)) {
+                        console.log(item);
+                        if (!item.isComplete) setCurrent(item);
+                    }
+                    return false;
+                }
+                return true;
+            }),
+        );
     };
 
     useEffect(() => {
@@ -42,20 +56,25 @@ const Dashboard = () => {
                         <p className="m-0 text-lg text-white">Appointments</p>
                         <p className="m-0 text-3xl text-white">18th May, 2023</p>
                     </div>
-                    <div className="current my-10">
-                        <p className="text-sm font-medium text-accent">CURRENT</p>
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <p className="text-xl text-text">Mr. Amir El Amari</p>
-                                <p className={"text-2xl text-accent"}>7:20pm - 8:00pm</p>
-                            </div>
-                            <div className="button h-full">
-                                <Button className={"h-full"}>
-                                    <Video className={"h-8 w-8"} />
-                                </Button>
+                    {current && (
+                        <div className="current my-10">
+                            <p className="text-sm font-medium text-accent">CURRENT</p>
+                            <div className="flex items-center justify-between">
+                                <div>
+                                    <p className="text-xl text-text">{current.apt_patient}</p>
+                                    <p className={"text-2xl text-accent"}>
+                                        {parseTime(current.apt_start)} -{" "}
+                                        {parseTime(current.apt_end)}
+                                    </p>
+                                </div>
+                                <div className="button h-full">
+                                    <Button className={"h-full"}>
+                                        <Video className={"h-8 w-8"} />
+                                    </Button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                     <div className="upcoming my-10">
                         <p className="mb-2 text-sm font-medium text-accent">UPCOMING</p>
                         <div className="list flex w-full flex-col gap-2">

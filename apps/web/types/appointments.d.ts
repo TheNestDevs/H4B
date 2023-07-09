@@ -5,7 +5,7 @@ interface IAppointments {
     apt_end: string;
     apt_start: string;
     created_at: string;
-    isCompleted: boolean;
+    isComplete: boolean;
     isTranscript_av: boolean;
     pres_id: null;
     transcriptURL: "a";
