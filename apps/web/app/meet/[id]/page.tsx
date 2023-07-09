@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { Mic, PhoneOff, User2, Video } from "lucide-react";
 import AgoraUIKit from "agora-react-uikit";
+import { Mic, PhoneOff, User2, Video } from "lucide-react";
 
 import Button from "@/components/ui/Button";
 
