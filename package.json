@@ -1,0 +1,18 @@
+{
+  "name": "h4b",
+  "version": "0.0.0",
+  "description": "Hackathon Submission for Hack4Bengal",
+  "keywords": [
+    "h4b2"
+  ],
+  "author": {
+    "name": "Team Innov8rs"
+  },
+  "devDependencies": {
+    "@bravo68web/eslint-config": "^1.1.2",
+    "@bravo68web/prettier-config": "^1.1.2",
+    "@bravo68web/tsconfig": "^1.1.2",
+    "eslint": "^8.44.0",
+    "prettier": "^3.0.0"
+  }
+}
