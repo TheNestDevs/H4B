@@ -1,6 +1,7 @@
 "use client";
 
-import { PhoneCall, User2, Video, Mic, PhoneOff } from "lucide-react";
+import { Mic, PhoneOff, User2, Video } from "lucide-react";
+
 import Button from "@/components/ui/Button";
 
 const MeetPage = () => {

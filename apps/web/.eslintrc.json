@@ -5,9 +5,9 @@
         "@next/next/no-img-element": "off",
         "react/button-has-type": "off",
         "react/no-array-index-key": "off",
+        "tailwindcss/enforces-shorthand": "off",
         "tailwindcss/no-custom-classname": "off",
         "unicorn/filename-case": "off",
-        "unicorn/prefer-logical-operator-over-ternary": "off",
-        "tailwindcss/enforces-shorthand": "off"
+        "unicorn/prefer-logical-operator-over-ternary": "off"
     }
 }
