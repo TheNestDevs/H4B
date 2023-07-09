@@ -27,7 +27,7 @@ const userNavigation = [
 
 const Navbar = () => {
     return (
-        <Disclosure as="nav" className=" bg-accent lg:border-none">
+        <Disclosure as="nav" className=" absolute left-0 top-0 w-full bg-accent lg:border-none">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
