@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+"use client";
+import React from "react";
 
-import Navbar from "../../components/ui/Navbar";
+import Navbar from "@/components/ui/Navbar";
 
 interface DashboardLayoutProps {
     children: React.ReactNode;
@@ -9,10 +10,10 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
     return (
         <>
-            <div className="min-h-full">
+            <div className="relative h-screen w-screen">
                 <Navbar />
-                <main className="pt-10">
-                    <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">{children}</div>
+                <main className="h-screen pt-20">
+                    <div className="mx-auto px-4 pb-12 sm:px-6 lg:px-8">{children}</div>
                 </main>
             </div>
         </>

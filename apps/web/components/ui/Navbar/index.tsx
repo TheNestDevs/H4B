@@ -14,10 +14,10 @@ const user = {
 };
 const navigation = [
     { name: "Dashboard", href: "#", current: true },
-    { name: "Team", href: "#", current: false },
-    { name: "Projects", href: "#", current: false },
-    { name: "Calendar", href: "#", current: false },
-    { name: "Reports", href: "#", current: false },
+    // { name: "Team", href: "#", current: false },
+    // { name: "Projects", href: "#", current: false },
+    // { name: "Calendar", href: "#", current: false },
+    // { name: "Reports", href: "#", current: false },
 ];
 const userNavigation = [
     { name: "Your Profile", href: "#" },
@@ -27,18 +27,22 @@ const userNavigation = [
 
 const Navbar = () => {
     return (
-        <Disclosure as="nav" className=" bg-primary lg:border-none">
+        <Disclosure as="nav" className=" absolute left-0 top-0 w-full bg-accent lg:border-none ">
             {({ open }) => (
                 <>
-                    <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-                        <div className="relative flex h-16 items-center justify-between">
+                    <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8 h-24 flex-col flex justify-center">
+                        <div className="relative flex items-center justify-between">
                             <div className="flex items-center px-2 lg:px-0">
                                 <div className="shrink-0">
-                                    <img
-                                        className="block h-8 w-8"
+                                    {/* <img
+                                        className="block h-12 w-12"
                                         src="https://tailwindui.com/img/logos/mark.svg?color=white"
                                         alt="Your Company"
-                                    />
+                                    /> */}
+                                    <div className="text-white flex-col flex">
+                                        <div className="text-4xl font-bold ">Telemedicine</div>
+                                        <div className = "text-lg font-light">&nbsp;Doctor's Portal</div>
+                                    </div>
                                 </div>
                                 <div className="hidden lg:ml-10 lg:block">
                                     <div className="flex space-x-4">
@@ -78,7 +82,7 @@ const Navbar = () => {
                                 <div className="flex items-center">
                                     <button
                                         type="button"
-                                        className="shrink-0 rounded-full bg-primary p-1 text-white focus:outline-none"
+                                        className="shrink-0 rounded-full bg-white/20 p-1 text-white focus:outline-none"
                                     >
                                         <span className="sr-only">View notifications</span>
                                         <BellIcon className="h-6 w-6" aria-hidden="true" />
