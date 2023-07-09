@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 
+import { Video } from "lucide-react";
 import Calendar from "react-calendar";
 
 import "react-calendar/dist/Calendar.css";
 import "@/styles/calendar.css";
 import Button from "@/components/ui/Button";
-import {Camera, Video} from "lucide-react";
 
 const Dashboard = () => {
     const [value, setValue] = useState(new Date());
