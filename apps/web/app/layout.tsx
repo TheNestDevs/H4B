@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +19,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en">
-            <body className={`${inter.className} text-text`}>
-                {children}
-            </body>
+            <body className={`${inter.className} text-text`}>{children}</body>
         </html>
     );
 }
