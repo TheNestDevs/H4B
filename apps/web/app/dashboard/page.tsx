@@ -31,13 +31,30 @@ const Dashboard = () => {
                         <p className="text-sm font-medium text-accent">CURRENT</p>
                         <div className="flex items-center justify-between">
                             <div>
-                                <p className="text-lg text-text">Mr. Amir El Amari</p>
+                                <p className="text-xl text-text">Mr. Amir El Amari</p>
                                 <p className={"text-2xl text-accent"}>7:20pm - 8:00pm</p>
                             </div>
                             <div className="button h-full">
                                 <Button className={"h-full"}>
                                     <Video className={"h-8 w-8"} />
                                 </Button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="upcoming my-10">
+                        <p className="mb-2 text-sm font-medium text-accent">UPCOMING</p>
+                        <div className="list flex w-full flex-col gap-2">
+                            <div className="meet">
+                                <p className="text-xl text-text">Mr. Amir El Amari</p>
+                                <p className={"text-2xl text-accent"}>7:20pm - 8:00pm</p>
+                            </div>
+                            <div className="meet">
+                                <p className="text-xl text-text">Mr. Amir El Amari</p>
+                                <p className={"text-2xl text-accent"}>7:20pm - 8:00pm</p>
+                            </div>
+                            <div className="meet">
+                                <p className="text-xl text-text">Mr. Amir El Amari</p>
+                                <p className={"text-2xl text-accent"}>7:20pm - 8:00pm</p>
                             </div>
                         </div>
                     </div>
