@@ -30,7 +30,7 @@ const Dashboard = () => {
     }, []);
     return (
         <div className={"px-2 lg:px-20"}>
-            <h1 className="heading my-16 mx-12 text-2xl font-regular text-text-secondary">
+            <h1 className="heading font-regular mx-12 my-16 text-2xl text-text-secondary">
                 Upcoming Appointments
             </h1>
             <div className={"flex flex-col gap-5 lg:flex-row"}>
