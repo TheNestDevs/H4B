@@ -15,8 +15,8 @@ const Dashboard = () => {
     };
     return (
         <div className={"px-2 lg:px-20"}>
-            <h1 className="heading my-5 text-5xl font-medium text-text-secondary">
-                Your Appointments
+            <h1 className="heading my-16 mx-12 text-2xl font-regular text-text-secondary">
+                Upcoming Appointments
             </h1>
             <div className={"flex flex-col gap-5 lg:flex-row"}>
                 <div className="w-full lg:w-3/5 ">
