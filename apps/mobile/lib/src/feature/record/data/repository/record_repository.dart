@@ -33,6 +33,6 @@ class RecordRepository {
       rethrow;
     }
   }
-}
 
-Future<dynamic> getRecordPrescription(String id) async {}
+  Future<dynamic> getRecordPrescription(String id) async {}
+}
