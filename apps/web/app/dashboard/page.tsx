@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Video } from "lucide-react";
 import Calendar from "react-calendar";
@@ -7,12 +7,27 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "@/styles/calendar.css";
 import Button from "@/components/ui/Button";
+import axios from "axios";
 
 const Dashboard = () => {
     const [value, setValue] = useState(new Date());
+    const [data, setData] = useState<IAppointments[]>([]);
+
     const onAdd = (...values: never[]) => {
         setValue(values[0]);
     };
+    const parseTime = (time: string) => {
+        const parsedTime = new Date(time);
+        return (parsedTime.getHours() + ":" + parsedTime.getMinutes()).padStart(5, "0");
+    };
+    const fetchData = async () => {
+        const { data } = await axios.get("https://5b91-203-171-240-120.ngrok-free.app/apt");
+        setData(data.appointments);
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
     return (
         <div className={"px-2 lg:px-20"}>
             <h1 className="heading my-5 text-5xl font-medium text-text-secondary">
@@ -44,18 +59,16 @@ const Dashboard = () => {
                     <div className="upcoming my-10">
                         <p className="mb-2 text-sm font-medium text-accent">UPCOMING</p>
                         <div className="list flex w-full flex-col gap-2">
-                            <div className="meet">
-                                <p className="text-xl text-text">Mr. Amir El Amari</p>
-                                <p className={"text-2xl text-accent"}>7:20pm - 8:00pm</p>
-                            </div>
-                            <div className="meet">
-                                <p className="text-xl text-text">Mr. Amir El Amari</p>
-                                <p className={"text-2xl text-accent"}>7:20pm - 8:00pm</p>
-                            </div>
-                            <div className="meet">
-                                <p className="text-xl text-text">Mr. Amir El Amari</p>
-                                <p className={"text-2xl text-accent"}>7:20pm - 8:00pm</p>
-                            </div>
+                            {data.map(item => {
+                                return (
+                                    <div key={item.id} className="meet">
+                                        <p className="text-xl text-text">{item.apt_patient}</p>
+                                        <p className={"text-2xl text-accent"}>
+                                            {parseTime(item.apt_start)} - {parseTime(item.apt_end)}
+                                        </p>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
