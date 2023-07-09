@@ -37,7 +37,22 @@ class AppTheme {
       ),
       labelSmall: GoogleFonts.inter(
         fontSize: 17.sp,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w300,
+        color: Colors.black,
+      ),
+      displayLarge: GoogleFonts.inter(
+        fontSize: 24.sp,
+        fontWeight: FontWeight.w300,
+        color: Colors.black,
+      ),
+      displayMedium: GoogleFonts.inter(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w300,
+        color: Colors.black,
+      ),
+      displaySmall: GoogleFonts.inter(
+        fontSize: 13.sp,
+        fontWeight: FontWeight.w300,
         color: Colors.black,
       ),
     ),

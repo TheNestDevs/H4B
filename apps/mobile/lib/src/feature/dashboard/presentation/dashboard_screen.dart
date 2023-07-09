@@ -74,7 +74,7 @@ class DashboardScreen extends ConsumerWidget {
                                 padding: const EdgeInsets.all(10.0),
                                 child: Text(
                                   'Hi, I’m Corti, your medical assistant. Tell me how you are feeling now.',
-                                  style: AppTheme.theme.textTheme.labelSmall,
+                                  style: AppTheme.theme.textTheme.displaySmall,
                                 ),
                               ),
                             ),
@@ -91,11 +91,15 @@ class DashboardScreen extends ConsumerWidget {
                                       AppTheme.kTealAccentColor,
                                     ),
                                   ),
-                                  child: Text(
-                                    'CHAT WITH CORTI',
-                                    style: AppTheme.theme.textTheme.bodySmall!
-                                        .copyWith(
-                                      fontWeight: FontWeight.w100,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Text(
+                                      'CHAT WITH CORTI',
+                                      style: AppTheme
+                                          .theme.textTheme.displayMedium!
+                                          .copyWith(
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
                                 ),
