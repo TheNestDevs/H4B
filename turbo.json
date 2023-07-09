@@ -10,6 +10,7 @@
             "inputs": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
             "outputs": ["**/.eslintcache"]
         },
-        "test": {}
+        "test": {},
+        "start": {}
     }
 }

@@ -1,0 +1,1201 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+"""whether this query should be cached (Hasura Cloud only)"""
+directive @cached(
+  """measured in seconds"""
+  ttl: Int! = 60
+
+  """refresh the cache entry"""
+  refresh: Boolean! = false
+) on QUERY
+
+"""
+Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'.
+"""
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
+}
+
+"""
+Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'.
+"""
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+"""
+Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'.
+"""
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+
+  """does the column match the given case-insensitive pattern"""
+  _ilike: String
+  _in: [String!]
+
+  """
+  does the column match the given POSIX regular expression, case insensitive
+  """
+  _iregex: String
+  _is_null: Boolean
+
+  """does the column match the given pattern"""
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+
+  """does the column NOT match the given case-insensitive pattern"""
+  _nilike: String
+  _nin: [String!]
+
+  """
+  does the column NOT match the given POSIX regular expression, case insensitive
+  """
+  _niregex: String
+
+  """does the column NOT match the given pattern"""
+  _nlike: String
+
+  """
+  does the column NOT match the given POSIX regular expression, case sensitive
+  """
+  _nregex: String
+
+  """does the column NOT match the given SQL regular expression"""
+  _nsimilar: String
+
+  """
+  does the column match the given POSIX regular expression, case sensitive
+  """
+  _regex: String
+
+  """does the column match the given SQL regular expression"""
+  _similar: String
+}
+
+"""
+columns and relationships of "appointments"
+"""
+type appointments {
+  apt_doctor: String!
+  apt_end: timestamptz!
+  apt_patient: String!
+  apt_start: timestamptz!
+  created_at: timestamptz!
+  id: uuid!
+  isComplete: Boolean!
+  isTranscript_av: Boolean!
+  pres_id: uuid!
+  transcriptURL: String!
+  updated_at: timestamptz!
+}
+
+"""
+aggregated selection of "appointments"
+"""
+type appointments_aggregate {
+  aggregate: appointments_aggregate_fields
+  nodes: [appointments!]!
+}
+
+"""
+aggregate fields of "appointments"
+"""
+type appointments_aggregate_fields {
+  count(columns: [appointments_select_column!], distinct: Boolean): Int!
+  max: appointments_max_fields
+  min: appointments_min_fields
+}
+
+"""
+Boolean expression to filter rows from the table "appointments". All fields are combined with a logical 'AND'.
+"""
+input appointments_bool_exp {
+  _and: [appointments_bool_exp!]
+  _not: appointments_bool_exp
+  _or: [appointments_bool_exp!]
+  apt_doctor: String_comparison_exp
+  apt_end: timestamptz_comparison_exp
+  apt_patient: String_comparison_exp
+  apt_start: timestamptz_comparison_exp
+  created_at: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  isComplete: Boolean_comparison_exp
+  isTranscript_av: Boolean_comparison_exp
+  pres_id: uuid_comparison_exp
+  transcriptURL: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "appointments"
+"""
+enum appointments_constraint {
+  """
+  unique or primary key constraint on columns "id"
+  """
+  appointments_pkey
+}
+
+"""
+input type for inserting data into table "appointments"
+"""
+input appointments_insert_input {
+  apt_doctor: String
+  apt_end: timestamptz
+  apt_patient: String
+  apt_start: timestamptz
+  created_at: timestamptz
+  id: uuid
+  isComplete: Boolean
+  isTranscript_av: Boolean
+  pres_id: uuid
+  transcriptURL: String
+  updated_at: timestamptz
+}
+
+"""aggregate max on columns"""
+type appointments_max_fields {
+  apt_doctor: String
+  apt_end: timestamptz
+  apt_patient: String
+  apt_start: timestamptz
+  created_at: timestamptz
+  id: uuid
+  pres_id: uuid
+  transcriptURL: String
+  updated_at: timestamptz
+}
+
+"""aggregate min on columns"""
+type appointments_min_fields {
+  apt_doctor: String
+  apt_end: timestamptz
+  apt_patient: String
+  apt_start: timestamptz
+  created_at: timestamptz
+  id: uuid
+  pres_id: uuid
+  transcriptURL: String
+  updated_at: timestamptz
+}
+
+"""
+response of any mutation on the table "appointments"
+"""
+type appointments_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [appointments!]!
+}
+
+"""
+on_conflict condition type for table "appointments"
+"""
+input appointments_on_conflict {
+  constraint: appointments_constraint!
+  update_columns: [appointments_update_column!]! = []
+  where: appointments_bool_exp
+}
+
+"""Ordering options when selecting data from "appointments"."""
+input appointments_order_by {
+  apt_doctor: order_by
+  apt_end: order_by
+  apt_patient: order_by
+  apt_start: order_by
+  created_at: order_by
+  id: order_by
+  isComplete: order_by
+  isTranscript_av: order_by
+  pres_id: order_by
+  transcriptURL: order_by
+  updated_at: order_by
+}
+
+"""primary key columns input for table: appointments"""
+input appointments_pk_columns_input {
+  id: uuid!
+}
+
+"""
+select columns of table "appointments"
+"""
+enum appointments_select_column {
+  """column name"""
+  apt_doctor
+
+  """column name"""
+  apt_end
+
+  """column name"""
+  apt_patient
+
+  """column name"""
+  apt_start
+
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  isComplete
+
+  """column name"""
+  isTranscript_av
+
+  """column name"""
+  pres_id
+
+  """column name"""
+  transcriptURL
+
+  """column name"""
+  updated_at
+}
+
+"""
+input type for updating data in table "appointments"
+"""
+input appointments_set_input {
+  apt_doctor: String
+  apt_end: timestamptz
+  apt_patient: String
+  apt_start: timestamptz
+  created_at: timestamptz
+  id: uuid
+  isComplete: Boolean
+  isTranscript_av: Boolean
+  pres_id: uuid
+  transcriptURL: String
+  updated_at: timestamptz
+}
+
+"""
+Streaming cursor of the table "appointments"
+"""
+input appointments_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: appointments_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input appointments_stream_cursor_value_input {
+  apt_doctor: String
+  apt_end: timestamptz
+  apt_patient: String
+  apt_start: timestamptz
+  created_at: timestamptz
+  id: uuid
+  isComplete: Boolean
+  isTranscript_av: Boolean
+  pres_id: uuid
+  transcriptURL: String
+  updated_at: timestamptz
+}
+
+"""
+update columns of table "appointments"
+"""
+enum appointments_update_column {
+  """column name"""
+  apt_doctor
+
+  """column name"""
+  apt_end
+
+  """column name"""
+  apt_patient
+
+  """column name"""
+  apt_start
+
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  isComplete
+
+  """column name"""
+  isTranscript_av
+
+  """column name"""
+  pres_id
+
+  """column name"""
+  transcriptURL
+
+  """column name"""
+  updated_at
+}
+
+input appointments_updates {
+  """sets the columns of the filtered rows to the given values"""
+  _set: appointments_set_input
+
+  """filter the rows which have to be updated"""
+  where: appointments_bool_exp!
+}
+
+"""ordering argument of a cursor"""
+enum cursor_ordering {
+  """ascending ordering of the cursor"""
+  ASC
+
+  """descending ordering of the cursor"""
+  DESC
+}
+
+scalar jsonb
+
+input jsonb_cast_exp {
+  String: String_comparison_exp
+}
+
+"""
+Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'.
+"""
+input jsonb_comparison_exp {
+  _cast: jsonb_cast_exp
+
+  """is the column contained in the given json value"""
+  _contained_in: jsonb
+
+  """does the column contain the given json value at the top level"""
+  _contains: jsonb
+  _eq: jsonb
+  _gt: jsonb
+  _gte: jsonb
+
+  """does the string exist as a top-level key in the column"""
+  _has_key: String
+
+  """do all of these strings exist as top-level keys in the column"""
+  _has_keys_all: [String!]
+
+  """do any of these strings exist as top-level keys in the column"""
+  _has_keys_any: [String!]
+  _in: [jsonb!]
+  _is_null: Boolean
+  _lt: jsonb
+  _lte: jsonb
+  _neq: jsonb
+  _nin: [jsonb!]
+}
+
+"""mutation root"""
+type mutation_root {
+  """
+  delete data from the table: "appointments"
+  """
+  delete_appointments(
+    """filter the rows which have to be deleted"""
+    where: appointments_bool_exp!
+  ): appointments_mutation_response
+
+  """
+  delete single row from the table: "appointments"
+  """
+  delete_appointments_by_pk(id: uuid!): appointments
+
+  """
+  delete data from the table: "pres"
+  """
+  delete_pres(
+    """filter the rows which have to be deleted"""
+    where: pres_bool_exp!
+  ): pres_mutation_response
+
+  """
+  delete single row from the table: "pres"
+  """
+  delete_pres_by_pk(id: uuid!): pres
+
+  """
+  insert data into the table: "appointments"
+  """
+  insert_appointments(
+    """the rows to be inserted"""
+    objects: [appointments_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: appointments_on_conflict
+  ): appointments_mutation_response
+
+  """
+  insert a single row into the table: "appointments"
+  """
+  insert_appointments_one(
+    """the row to be inserted"""
+    object: appointments_insert_input!
+
+    """upsert condition"""
+    on_conflict: appointments_on_conflict
+  ): appointments
+
+  """
+  insert data into the table: "pres"
+  """
+  insert_pres(
+    """the rows to be inserted"""
+    objects: [pres_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: pres_on_conflict
+  ): pres_mutation_response
+
+  """
+  insert a single row into the table: "pres"
+  """
+  insert_pres_one(
+    """the row to be inserted"""
+    object: pres_insert_input!
+
+    """upsert condition"""
+    on_conflict: pres_on_conflict
+  ): pres
+
+  """
+  update data of the table: "appointments"
+  """
+  update_appointments(
+    """sets the columns of the filtered rows to the given values"""
+    _set: appointments_set_input
+
+    """filter the rows which have to be updated"""
+    where: appointments_bool_exp!
+  ): appointments_mutation_response
+
+  """
+  update single row of the table: "appointments"
+  """
+  update_appointments_by_pk(
+    """sets the columns of the filtered rows to the given values"""
+    _set: appointments_set_input
+    pk_columns: appointments_pk_columns_input!
+  ): appointments
+
+  """
+  update multiples rows of table: "appointments"
+  """
+  update_appointments_many(
+    """updates to execute, in order"""
+    updates: [appointments_updates!]!
+  ): [appointments_mutation_response]
+
+  """
+  update data of the table: "pres"
+  """
+  update_pres(
+    """append existing jsonb value of filtered columns with new jsonb value"""
+    _append: pres_append_input
+
+    """
+    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+    """
+    _delete_at_path: pres_delete_at_path_input
+
+    """
+    delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array
+    """
+    _delete_elem: pres_delete_elem_input
+
+    """
+    delete key/value pair or string element. key/value pairs are matched based on their key value
+    """
+    _delete_key: pres_delete_key_input
+
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: pres_inc_input
+
+    """prepend existing jsonb value of filtered columns with new jsonb value"""
+    _prepend: pres_prepend_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: pres_set_input
+
+    """filter the rows which have to be updated"""
+    where: pres_bool_exp!
+  ): pres_mutation_response
+
+  """
+  update single row of the table: "pres"
+  """
+  update_pres_by_pk(
+    """append existing jsonb value of filtered columns with new jsonb value"""
+    _append: pres_append_input
+
+    """
+    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+    """
+    _delete_at_path: pres_delete_at_path_input
+
+    """
+    delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array
+    """
+    _delete_elem: pres_delete_elem_input
+
+    """
+    delete key/value pair or string element. key/value pairs are matched based on their key value
+    """
+    _delete_key: pres_delete_key_input
+
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: pres_inc_input
+
+    """prepend existing jsonb value of filtered columns with new jsonb value"""
+    _prepend: pres_prepend_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: pres_set_input
+    pk_columns: pres_pk_columns_input!
+  ): pres
+
+  """
+  update multiples rows of table: "pres"
+  """
+  update_pres_many(
+    """updates to execute, in order"""
+    updates: [pres_updates!]!
+  ): [pres_mutation_response]
+}
+
+"""column ordering options"""
+enum order_by {
+  """in ascending order, nulls last"""
+  asc
+
+  """in ascending order, nulls first"""
+  asc_nulls_first
+
+  """in ascending order, nulls last"""
+  asc_nulls_last
+
+  """in descending order, nulls first"""
+  desc
+
+  """in descending order, nulls first"""
+  desc_nulls_first
+
+  """in descending order, nulls last"""
+  desc_nulls_last
+}
+
+"""
+columns and relationships of "pres"
+"""
+type pres {
+  created_at: timestamptz!
+  id: uuid!
+  meds(
+    """JSON select path"""
+    path: String
+  ): jsonb!
+  p_age: Int!
+  p_name: String!
+  remarks: String!
+  sig_fingerprint: String!
+  updated_at: timestamptz!
+}
+
+"""
+aggregated selection of "pres"
+"""
+type pres_aggregate {
+  aggregate: pres_aggregate_fields
+  nodes: [pres!]!
+}
+
+"""
+aggregate fields of "pres"
+"""
+type pres_aggregate_fields {
+  avg: pres_avg_fields
+  count(columns: [pres_select_column!], distinct: Boolean): Int!
+  max: pres_max_fields
+  min: pres_min_fields
+  stddev: pres_stddev_fields
+  stddev_pop: pres_stddev_pop_fields
+  stddev_samp: pres_stddev_samp_fields
+  sum: pres_sum_fields
+  var_pop: pres_var_pop_fields
+  var_samp: pres_var_samp_fields
+  variance: pres_variance_fields
+}
+
+"""append existing jsonb value of filtered columns with new jsonb value"""
+input pres_append_input {
+  meds: jsonb
+}
+
+"""aggregate avg on columns"""
+type pres_avg_fields {
+  p_age: Float
+}
+
+"""
+Boolean expression to filter rows from the table "pres". All fields are combined with a logical 'AND'.
+"""
+input pres_bool_exp {
+  _and: [pres_bool_exp!]
+  _not: pres_bool_exp
+  _or: [pres_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  meds: jsonb_comparison_exp
+  p_age: Int_comparison_exp
+  p_name: String_comparison_exp
+  remarks: String_comparison_exp
+  sig_fingerprint: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "pres"
+"""
+enum pres_constraint {
+  """
+  unique or primary key constraint on columns "id"
+  """
+  pres_pkey
+}
+
+"""
+delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+"""
+input pres_delete_at_path_input {
+  meds: [String!]
+}
+
+"""
+delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array
+"""
+input pres_delete_elem_input {
+  meds: Int
+}
+
+"""
+delete key/value pair or string element. key/value pairs are matched based on their key value
+"""
+input pres_delete_key_input {
+  meds: String
+}
+
+"""
+input type for incrementing numeric columns in table "pres"
+"""
+input pres_inc_input {
+  p_age: Int
+}
+
+"""
+input type for inserting data into table "pres"
+"""
+input pres_insert_input {
+  created_at: timestamptz
+  id: uuid
+  meds: jsonb
+  p_age: Int
+  p_name: String
+  remarks: String
+  sig_fingerprint: String
+  updated_at: timestamptz
+}
+
+"""aggregate max on columns"""
+type pres_max_fields {
+  created_at: timestamptz
+  id: uuid
+  p_age: Int
+  p_name: String
+  remarks: String
+  sig_fingerprint: String
+  updated_at: timestamptz
+}
+
+"""aggregate min on columns"""
+type pres_min_fields {
+  created_at: timestamptz
+  id: uuid
+  p_age: Int
+  p_name: String
+  remarks: String
+  sig_fingerprint: String
+  updated_at: timestamptz
+}
+
+"""
+response of any mutation on the table "pres"
+"""
+type pres_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [pres!]!
+}
+
+"""
+on_conflict condition type for table "pres"
+"""
+input pres_on_conflict {
+  constraint: pres_constraint!
+  update_columns: [pres_update_column!]! = []
+  where: pres_bool_exp
+}
+
+"""Ordering options when selecting data from "pres"."""
+input pres_order_by {
+  created_at: order_by
+  id: order_by
+  meds: order_by
+  p_age: order_by
+  p_name: order_by
+  remarks: order_by
+  sig_fingerprint: order_by
+  updated_at: order_by
+}
+
+"""primary key columns input for table: pres"""
+input pres_pk_columns_input {
+  id: uuid!
+}
+
+"""prepend existing jsonb value of filtered columns with new jsonb value"""
+input pres_prepend_input {
+  meds: jsonb
+}
+
+"""
+select columns of table "pres"
+"""
+enum pres_select_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  meds
+
+  """column name"""
+  p_age
+
+  """column name"""
+  p_name
+
+  """column name"""
+  remarks
+
+  """column name"""
+  sig_fingerprint
+
+  """column name"""
+  updated_at
+}
+
+"""
+input type for updating data in table "pres"
+"""
+input pres_set_input {
+  created_at: timestamptz
+  id: uuid
+  meds: jsonb
+  p_age: Int
+  p_name: String
+  remarks: String
+  sig_fingerprint: String
+  updated_at: timestamptz
+}
+
+"""aggregate stddev on columns"""
+type pres_stddev_fields {
+  p_age: Float
+}
+
+"""aggregate stddev_pop on columns"""
+type pres_stddev_pop_fields {
+  p_age: Float
+}
+
+"""aggregate stddev_samp on columns"""
+type pres_stddev_samp_fields {
+  p_age: Float
+}
+
+"""
+Streaming cursor of the table "pres"
+"""
+input pres_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: pres_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input pres_stream_cursor_value_input {
+  created_at: timestamptz
+  id: uuid
+  meds: jsonb
+  p_age: Int
+  p_name: String
+  remarks: String
+  sig_fingerprint: String
+  updated_at: timestamptz
+}
+
+"""aggregate sum on columns"""
+type pres_sum_fields {
+  p_age: Int
+}
+
+"""
+update columns of table "pres"
+"""
+enum pres_update_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  meds
+
+  """column name"""
+  p_age
+
+  """column name"""
+  p_name
+
+  """column name"""
+  remarks
+
+  """column name"""
+  sig_fingerprint
+
+  """column name"""
+  updated_at
+}
+
+input pres_updates {
+  """append existing jsonb value of filtered columns with new jsonb value"""
+  _append: pres_append_input
+
+  """
+  delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+  """
+  _delete_at_path: pres_delete_at_path_input
+
+  """
+  delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array
+  """
+  _delete_elem: pres_delete_elem_input
+
+  """
+  delete key/value pair or string element. key/value pairs are matched based on their key value
+  """
+  _delete_key: pres_delete_key_input
+
+  """increments the numeric columns with given value of the filtered values"""
+  _inc: pres_inc_input
+
+  """prepend existing jsonb value of filtered columns with new jsonb value"""
+  _prepend: pres_prepend_input
+
+  """sets the columns of the filtered rows to the given values"""
+  _set: pres_set_input
+
+  """filter the rows which have to be updated"""
+  where: pres_bool_exp!
+}
+
+"""aggregate var_pop on columns"""
+type pres_var_pop_fields {
+  p_age: Float
+}
+
+"""aggregate var_samp on columns"""
+type pres_var_samp_fields {
+  p_age: Float
+}
+
+"""aggregate variance on columns"""
+type pres_variance_fields {
+  p_age: Float
+}
+
+type query_root {
+  """
+  fetch data from the table: "appointments"
+  """
+  appointments(
+    """distinct select on columns"""
+    distinct_on: [appointments_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [appointments_order_by!]
+
+    """filter the rows returned"""
+    where: appointments_bool_exp
+  ): [appointments!]!
+
+  """
+  fetch aggregated fields from the table: "appointments"
+  """
+  appointments_aggregate(
+    """distinct select on columns"""
+    distinct_on: [appointments_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [appointments_order_by!]
+
+    """filter the rows returned"""
+    where: appointments_bool_exp
+  ): appointments_aggregate!
+
+  """fetch data from the table: "appointments" using primary key columns"""
+  appointments_by_pk(id: uuid!): appointments
+
+  """
+  fetch data from the table: "pres"
+  """
+  pres(
+    """distinct select on columns"""
+    distinct_on: [pres_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [pres_order_by!]
+
+    """filter the rows returned"""
+    where: pres_bool_exp
+  ): [pres!]!
+
+  """
+  fetch aggregated fields from the table: "pres"
+  """
+  pres_aggregate(
+    """distinct select on columns"""
+    distinct_on: [pres_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [pres_order_by!]
+
+    """filter the rows returned"""
+    where: pres_bool_exp
+  ): pres_aggregate!
+
+  """fetch data from the table: "pres" using primary key columns"""
+  pres_by_pk(id: uuid!): pres
+}
+
+type subscription_root {
+  """
+  fetch data from the table: "appointments"
+  """
+  appointments(
+    """distinct select on columns"""
+    distinct_on: [appointments_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [appointments_order_by!]
+
+    """filter the rows returned"""
+    where: appointments_bool_exp
+  ): [appointments!]!
+
+  """
+  fetch aggregated fields from the table: "appointments"
+  """
+  appointments_aggregate(
+    """distinct select on columns"""
+    distinct_on: [appointments_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [appointments_order_by!]
+
+    """filter the rows returned"""
+    where: appointments_bool_exp
+  ): appointments_aggregate!
+
+  """fetch data from the table: "appointments" using primary key columns"""
+  appointments_by_pk(id: uuid!): appointments
+
+  """
+  fetch data from the table in a streaming manner: "appointments"
+  """
+  appointments_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [appointments_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: appointments_bool_exp
+  ): [appointments!]!
+
+  """
+  fetch data from the table: "pres"
+  """
+  pres(
+    """distinct select on columns"""
+    distinct_on: [pres_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [pres_order_by!]
+
+    """filter the rows returned"""
+    where: pres_bool_exp
+  ): [pres!]!
+
+  """
+  fetch aggregated fields from the table: "pres"
+  """
+  pres_aggregate(
+    """distinct select on columns"""
+    distinct_on: [pres_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [pres_order_by!]
+
+    """filter the rows returned"""
+    where: pres_bool_exp
+  ): pres_aggregate!
+
+  """fetch data from the table: "pres" using primary key columns"""
+  pres_by_pk(id: uuid!): pres
+
+  """
+  fetch data from the table in a streaming manner: "pres"
+  """
+  pres_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [pres_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: pres_bool_exp
+  ): [pres!]!
+}
+
+scalar timestamptz
+
+"""
+Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'.
+"""
+input timestamptz_comparison_exp {
+  _eq: timestamptz
+  _gt: timestamptz
+  _gte: timestamptz
+  _in: [timestamptz!]
+  _is_null: Boolean
+  _lt: timestamptz
+  _lte: timestamptz
+  _neq: timestamptz
+  _nin: [timestamptz!]
+}
+
+scalar uuid
+
+"""
+Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'.
+"""
+input uuid_comparison_exp {
+  _eq: uuid
+  _gt: uuid
+  _gte: uuid
+  _in: [uuid!]
+  _is_null: Boolean
+  _lt: uuid
+  _lte: uuid
+  _neq: uuid
+  _nin: [uuid!]
+}
+
