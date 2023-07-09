@@ -6,7 +6,7 @@ const buttonVariants = cva("px-4 py-2", {
     variants: {
         variant: {
             primary: "rounded bg-accent text-white",
-            secondary: "bg-primary rounded",
+            secondary: "rounded bg-primary",
         },
         size: {
             default: "w-min",
