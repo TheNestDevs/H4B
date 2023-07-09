@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mobile/src/app/router/router.dart';
 
 import '../../../../app/theme/theme.dart';
 
@@ -82,7 +84,7 @@ class DashboardHeader extends ConsumerWidget {
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 24.w),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => context.push(AppRouterPath.chat),
                             style: ButtonStyle(
                               elevation: MaterialStateProperty.all(6),
                               backgroundColor: MaterialStateProperty.all(
