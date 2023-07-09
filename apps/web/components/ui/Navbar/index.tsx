@@ -27,7 +27,7 @@ const userNavigation = [
 
 const Navbar = () => {
     return (
-        <Disclosure as="nav" className=" bg-primary lg:border-none">
+        <Disclosure as="nav" className=" absolute left-0 top-0 w-full bg-accent lg:border-none">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
@@ -78,7 +78,7 @@ const Navbar = () => {
                                 <div className="flex items-center">
                                     <button
                                         type="button"
-                                        className="shrink-0 rounded-full bg-primary p-1 text-white focus:outline-none"
+                                        className="shrink-0 rounded-full bg-white/20 p-1 text-white focus:outline-none"
                                     >
                                         <span className="sr-only">View notifications</span>
                                         <BellIcon className="h-6 w-6" aria-hidden="true" />

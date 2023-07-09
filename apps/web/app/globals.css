@@ -4,10 +4,10 @@
 
 :root {
     --color-text: 3 3 18;
-    --color-background: 237 237 252;
-    --color-primary: 221 44 44;
-    --color-secondary: 255 255 255;
-    --color-accent: 17 218 232;
+    --color-text-secondary: 32 79 110;
+    --color-background: 250 248 245;
+    --color-primary: 199 234 202;
+    --color-accent: 51 151 152;
 }
 
 * {
