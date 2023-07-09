@@ -15,3 +15,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/*.video video {*/
+/*    position: fixed !important;*/
+/*    width: 50vw !important;*/
+/*    height: 100vh !important;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*}*/
+
+/*._3Sxu7 video.agora_video_player {*/
+/*    display: block;*/
+/*    position: fixed !important;*/
+/*    width: 50vw !important;*/
+/*    height: 100vh !important;*/
+/*    top: 0;*/
+/*    left: 50vw !important;*/
+/*    !*z-index: 1000;*!*/
+/*}*/
+
+/*._3Sxu7 {*/
+/*    !*display: none !important;*!*/
+/*    background: black;*/
+/*}*/
+/*._3Sxu7 div{*/
+/*}*/
