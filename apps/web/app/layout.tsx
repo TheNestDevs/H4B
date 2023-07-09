@@ -20,7 +20,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en">
             <body className={`${inter.className} text-text`}>
-                <Navbar />
                 {children}
             </body>
         </html>
