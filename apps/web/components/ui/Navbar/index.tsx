@@ -78,7 +78,7 @@ const Navbar = () => {
                                 <div className="flex items-center">
                                     <button
                                         type="button"
-                                        className="shrink-0 rounded-full bg-primary p-1 text-white focus:outline-none"
+                                        className="shrink-0 rounded-full bg-white/20 p-1 text-white focus:outline-none"
                                     >
                                         <span className="sr-only">View notifications</span>
                                         <BellIcon className="h-6 w-6" aria-hidden="true" />
