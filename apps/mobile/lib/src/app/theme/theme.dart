@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const Color kGreenColor = Color(0xFF77DB8F);
+  static const Color kLightGreenColor = Color(0xFFC7EACA);
   static const Color kTealAccentColor = Color(0xFF339798);
   static const Color kRedColor = Color(0xFFFFE3E3);
 
