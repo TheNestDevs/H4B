@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile/src/app/router/router.dart';
 
+import '../../../app/router/router.dart';
 import 'widgets/dashboard_appointment_tile.dart';
 import 'widgets/dashboard_header.dart';
 import 'widgets/dashboard_tile.dart';

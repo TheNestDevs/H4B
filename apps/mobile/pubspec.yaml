@@ -43,6 +43,7 @@ dependencies:
   flutter_screenutil: ^5.8.4
   dio: ^5.2.1+1
   equatable: ^2.0.5
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_test:

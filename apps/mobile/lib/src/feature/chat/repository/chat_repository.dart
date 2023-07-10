@@ -39,4 +39,24 @@ class ChatRepository {
       rethrow;
     }
   }
+
+  Future<dynamic> bookAppointment() async {
+    try {
+      Response<dynamic> res = await _dioClient.post(
+        '/apt',
+        data: {
+          "apt_doctor": "Anil",
+          "apt_patient": "Rakesh",
+          "isComplete": false,
+          "isTranscript_av": false,
+          "transcriptURL": "na",
+          "apt_start": "22 Dec 2003",
+          "apt_end": "27 Dec 2003"
+        },
+      );
+    } catch (err) {
+      print(err.toString());
+      rethrow;
+    }
+  }
 }

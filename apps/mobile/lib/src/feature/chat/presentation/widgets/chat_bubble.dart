@@ -7,11 +7,13 @@ import '../../../../app/theme/theme.dart';
 class ChatBubble extends ConsumerWidget {
   final bool sendByMe;
   final String message;
+  final Widget? child;
 
   const ChatBubble({
     super.key,
     required this.message,
     this.sendByMe = false,
+    this.child,
   });
 
   @override
@@ -41,12 +43,17 @@ class ChatBubble extends ConsumerWidget {
                   bottomRight: Radius.circular(20),
                 ),
         ),
-        child: Text(
-          message,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-          ),
+        child: Column(
+          children: [
+            Text(
+              message,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+            ),
+            child ?? const SizedBox(),
+          ],
         ),
       ),
     );

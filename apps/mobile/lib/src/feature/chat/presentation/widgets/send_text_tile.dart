@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mobile/src/app/router/router.dart';
 import 'package:mobile/src/app/utils/string.dart';
 
 import '../../../../app/theme/theme.dart';
@@ -18,7 +20,8 @@ class SendTextTile extends ConsumerWidget {
     this.focusNode,
   });
 
-  Future<void> onSend(TextEditingController controller, WidgetRef ref) async {
+  Future<void> onSend(TextEditingController controller, WidgetRef ref,
+      BuildContext context) async {
     ref.read(chatBubblesProvider.notifier).update((state) =>
         [...state, ChatBubble(message: controller.text, sendByMe: true)]);
 
@@ -28,10 +31,32 @@ class SendTextTile extends ConsumerWidget {
 
     final specialist = await chatRepo.getSpecialist(controller.text);
 
-    ref.read(chatBubblesProvider.notifier).update((state) => [
-          ...state,
-          ChatBubble(message: specialist.toTitleCase(), sendByMe: false)
-        ]);
+    ref.read(chatBubblesProvider.notifier).update(
+          (state) => [
+            ...state,
+            ChatBubble(
+              message: specialist.toTitleCase(),
+              sendByMe: false,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppTheme.kTealAccentColor,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 8.w,
+                    vertical: 4.h,
+                  ),
+                ),
+                onPressed: () =>
+                    context.replace(AppRouterPath.successAppointment),
+                child: Text(
+                  'Quick Appointment',
+                  style: AppTheme.theme.textTheme.displaySmall!.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            )
+          ],
+        );
   }
 
   @override
@@ -81,7 +106,7 @@ class SendTextTile extends ConsumerWidget {
               ),
             ),
             IconButton(
-              onPressed: () => onSend(controller!, ref),
+              onPressed: () => onSend(controller!, ref, context),
               icon: const Icon(
                 Icons.send,
                 color: AppTheme.kTealAccentColor,
