@@ -12,7 +12,8 @@ class RecordScreen extends ConsumerWidget {
 
   Future<void> viewPrescription(String id, WidgetRef ref) async {
     await launchUrl(
-      Uri.parse("https://google.com"),
+      Uri.parse(
+          "https://h4-b-prescription-interface.vercel.app/0q213if2q08e34h8f"),
       mode: LaunchMode.externalApplication,
     );
   }
@@ -35,53 +36,51 @@ class RecordScreen extends ConsumerWidget {
         ),
       ),
       body: allRecords.when(
-        data: (data) =>
-            ListView.builder(
-              itemCount: data.appointments.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 16.h,
-                    horizontal: 18.w,
+        data: (data) => ListView.builder(
+          itemCount: data.appointments.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 16.h,
+                horizontal: 18.w,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      const Color(0xFF7BD18F).withOpacity(0.85),
+                      const Color(0xFF339798),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          const Color(0xFF7BD18F).withOpacity(0.85),
-                          const Color(0xFF339798),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      style: ListTileStyle.list,
-                      tileColor: Colors.transparent,
-                      onTap: () => {},
-                      trailing: ElevatedButton(
-                        onPressed: () => viewPrescription('', ref),
-                        child: Text(
-                          'View Prescription',
-                          style: AppTheme.theme.textTheme.displaySmall,
-                        ),
-                      ),
-                      title: Text(
-                        'Doctor : ${data.appointments[index].apt_doctor!}',
-                        style: AppTheme.theme.textTheme.bodyMedium,
-                      ),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                child: ListTile(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  style: ListTileStyle.list,
+                  tileColor: Colors.transparent,
+                  onTap: () => {},
+                  trailing: ElevatedButton(
+                    onPressed: () => viewPrescription('', ref),
+                    child: Text(
+                      'View Prescription',
+                      style: AppTheme.theme.textTheme.displaySmall,
                     ),
                   ),
-                );
-              },
-            ),
+                  title: Text(
+                    'Doctor : ${data.appointments[index].apt_doctor!}',
+                    style: AppTheme.theme.textTheme.bodyMedium,
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
         error: (err, stackTrace) {},
-        loading: () =>
-        const Center(
+        loading: () => const Center(
           child: CircularProgressIndicator(),
         ),
       ),

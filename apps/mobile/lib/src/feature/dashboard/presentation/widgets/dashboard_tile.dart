@@ -24,8 +24,8 @@ class DashboardTile extends ConsumerWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          height: 100.w,
-          width: 100.w,
+          height: 110.w,
+          width: 150.w,
           decoration: BoxDecoration(
             color: AppTheme.kLightGreenColor,
             borderRadius: BorderRadius.circular(15.r),
