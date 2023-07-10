@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../provider/global_provider.dart';
+
 final chatRepositoryProvider = Provider.autoDispose<ChatRepository>(
   (ref) => ChatRepository(
     dioClient: Dio(
       BaseOptions(
         contentType: 'application/json',
-        baseUrl: 'https://5b91-203-171-240-120.ngrok-free.app',
+        baseUrl: ref.watch(baseUrlProvider),
         responseType: ResponseType.json,
       ),
     ),

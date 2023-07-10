@@ -7,7 +7,7 @@ import '../../../app/theme/theme.dart';
 import 'widgets/chat_bubble.dart';
 import 'widgets/send_text_tile.dart';
 
-final chatBubblesProvider = StateProvider<List<ChatBubble>>(
+final chatBubblesProvider = StateProvider.autoDispose<List<ChatBubble>>(
   (ref) => [
     const ChatBubble(
       message: 'Hello there, I am Corti, your personal health assistant.',
