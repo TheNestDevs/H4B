@@ -22,7 +22,7 @@ const Dashboard = () => {
         return (parsedTime.getHours() + ":" + parsedTime.getMinutes()).padStart(5, "0");
     };
     const fetchData = async () => {
-        const { data } = await axios.get("https://5b91-203-171-240-120.ngrok-free.app/apt");
+        const { data } = await axios.get("api.zenithmed.xyz/apt");
         setData(
             data.appointments.filter((item: IAppointments) => {
                 // console.log(new Date(), new Date(item.apt_start));

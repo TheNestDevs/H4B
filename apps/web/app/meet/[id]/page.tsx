@@ -11,9 +11,9 @@ const MeetPage = () => {
     const [videoCall, setVideoCall] = useState(false);
 
     const rtcProps = {
-        appId: "d37f8e2e8aeb44b1aba9a911d957b666",
-        channel: "test",
-        token: "007eJxTYPi3fecUi5gb/7LCv4es2VltIDtVo3DrVX6md416bK5X0ooVGNJMTI2SzSzMzNNMU0zMk0wtEhPNk5PSjM1MTC0Mjc1SEv+sSmkIZGS4Nes1MyMDBIL4LAwlqcUlDAwAqO8hIQ==",
+        appId: "f452c6867f5d47b58aa7cbf36458136d",
+        channel: "h4b",
+        token: "007eJxTYPg2NVL6tvbDmtf+XxjnGzubzYi/GfzOZcmB42XcAqsEeLkUGNJMTI2SzSzMzNNMU0zMk0wtEhPNk5PSjM1MTC0Mjc1S9txfndIQyMiw37+KgREKQXxmhgyTJAYGABLHHn4=",
     };
     const callbacks = {
         EndCall: () => setVideoCall(false),
