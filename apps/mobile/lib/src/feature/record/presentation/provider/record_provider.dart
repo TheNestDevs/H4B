@@ -5,7 +5,7 @@ import '../../domain/model/appointment/appointment_model.dart';
 import '../../domain/states/records.dart';
 
 final recordNotifierProvider =
-    StateNotifierProvider<RecordNotifier, RecordState>(
+    StateNotifierProvider.autoDispose<RecordNotifier, RecordState>(
   (ref) => RecordNotifier(
     recordRepository: ref.watch(recordRepositoryProvider),
   ),

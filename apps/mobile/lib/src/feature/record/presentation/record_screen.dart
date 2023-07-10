@@ -35,23 +35,36 @@ class RecordScreen extends ConsumerWidget {
                 vertical: 16.h,
                 horizontal: 18.w,
               ),
-              child: ListTile(
-                shape: RoundedRectangleBorder(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      const Color(0xFF7BD18F).withOpacity(0.85),
+                      const Color(0xFF339798),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                style: ListTileStyle.list,
-                tileColor: AppTheme.kTealAccentColor,
-                onTap: () => {},
-                trailing: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'View Prescription',
-                    style: AppTheme.theme.textTheme.displaySmall,
+                child: ListTile(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
-                ),
-                title: Text(
-                  'Doctor : ${data.appointments[index].apt_doctor!}',
-                  style: AppTheme.theme.textTheme.bodyMedium,
+                  style: ListTileStyle.list,
+                  tileColor: Colors.transparent,
+                  onTap: () => {},
+                  trailing: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'View Prescription',
+                      style: AppTheme.theme.textTheme.displaySmall,
+                    ),
+                  ),
+                  title: Text(
+                    'Doctor : ${data.appointments[index].apt_doctor!}',
+                    style: AppTheme.theme.textTheme.bodyMedium,
+                  ),
                 ),
               ),
             );

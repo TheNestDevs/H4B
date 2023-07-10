@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/theme/theme.dart';
 import 'widgets/chat_bubble.dart';
 import 'widgets/send_text_tile.dart';
 
+final chatBubblesProvider = StateProvider.autoDispose<List<ChatBubble>>(
+  (ref) => [
+    const ChatBubble(
+      message: 'Hello there, I am Corti, your personal health assistant.',
+      sendByMe: false,
+    ),
+    const ChatBubble(
+      message: 'Tell me about your symptoms.',
+      sendByMe: false,
+    ),
+  ],
+);
+
 class ChatScreen extends ConsumerWidget {
   const ChatScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final chatBubbles = ref.watch(chatBubblesProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -29,17 +45,17 @@ class ChatScreen extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                ChatBubble(
-                  message: 'djwiqjq',
-                  sendByMe: true,
-                ),
-                ChatBubble(
-                  message: 'djhifohefhioewfjoiwejfiowewiqjq',
-                  sendByMe: false,
-                ),
-                ChatBubble(
-                  message: 'djwfjkefljlkfjfknfiqjfijnfwenfiqjq',
-                  sendByMe: true,
+                SizedBox(
+                  height: MediaQuery.of(context).viewInsets.bottom == 0
+                      ? 0.8.sh
+                      : 0.47.sh,
+                  child: ListView.builder(
+                    itemCount: chatBubbles.length,
+                    // reverse: true,
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
+                    itemBuilder: (context, i) => chatBubbles[i],
+                  ),
                 ),
               ],
             ),
