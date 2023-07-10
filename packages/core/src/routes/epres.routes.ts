@@ -6,5 +6,6 @@ const epress = new Hono();
 
 epress.post("/", new epressController().create);
 epress.get("/:id", new epressController().getP);
+epress.post("/verify", new epressController().verify)
 
 export { epress }

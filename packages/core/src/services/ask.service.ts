@@ -6,11 +6,12 @@ export default class AskService {
         const response = await openAI.createChatCompletion({
             messages: [{
                 role: "user",
-                content: "You are helping a physician generate a differential diagnosis on a patient who is presenting with the following symptoms " + suspectedSymptoms + ". The answer should be in bullet points. List the differential diagnosis with the percentage of likelihood. Include only the top 5 conditions. Answer in a bullet point format. And also show which doctor shall I consult"
+                content: "You are helping a physician generate a differential diagnosis on a patient who is presenting with the following symptoms " + suspectedSymptoms + ". The answer should be in bullet points. List the differential diagnosis with the percentage of likelihood. Include only the top 5 conditions. Answer in a bullet point format. And also show which field of doctor shall I consult for each likelyhood"
             }],
             model: "gpt-3.5-turbo"
         })
-        return response.data.choices[0].message?.content
+        //  response.data.choices[0].message?.content
+        return parseResponse(response.data.choices[0].message?.content as string);
     }
 
     async askWhomToConsult2(suspectedSymptoms: string) {

@@ -13,7 +13,7 @@ export default class AskController extends AskService {
 
     async askSymptoms(ctx: Context) {
         const suspectedSymptoms: SuspectedSymptoms = await ctx.req.json();
-        const response = await super.askWhomToConsult2(suspectedSymptoms.symptoms);
+        const response = await super.askWhomToConsult(suspectedSymptoms.symptoms);
         return ctx.json({
             response
         })
