@@ -20,7 +20,7 @@ export default function Home({ params }: { params: { id: string } }) {
         <div className="w-[420px] h-[595px] relative overflow-hidden bg-white drop-shadow-md mx-auto">
   <p className="w-[210px] h-[18px] absolute left-[30px] top-[67px] text-xs font-medium text-left text-[#204f6e]">
     <span className="w-[210px] h-[18px] text-xs font-medium text-left text-[#204f6e]">
-      Dr. Avdsjf ajfkafj
+      Dr. Joseph Smith
     </span>
     <br />
   </p>
@@ -50,10 +50,10 @@ export default function Home({ params }: { params: { id: string } }) {
     <line y1={1} x2={360} y2={1} stroke="#349899" stroke-width={2} />
   </svg>
   <p className="w-[210px] h-[22px] absolute left-[30px] top-[110px] text-[10px] font-medium text-left text-[#656565]">
-    Patient Name: Tieury hadufah
+    Patient Name: Rakesh Sharma
   </p>
   <p className="w-[60px] h-[22px] absolute left-[30px] top-[132px] text-[10px] font-medium text-left text-[#656565]">
-    Age: 23
+    Age: 27
   </p>
   <p className="w-[75px] h-[22px] absolute left-[105px] top-[132px] text-[10px] font-medium text-left text-[#656565]">
     Gender: Male
@@ -65,13 +65,13 @@ export default function Home({ params }: { params: { id: string } }) {
     Remarks:
   </p>
   <p className="w-[360px] h-4 absolute left-[30px] top-[445px] text-[10px] font-medium text-left text-[#656565]">
-    Patient is stable
+    Drink hot water and gargle regularly
   </p>
   <p className="w-[360px] h-[22px] absolute left-[30px] top-[198px] text-[10px] font-medium text-left text-[#656565]">
-    Paracetamol, 300mg, twice per day
+    Paracetamol, 600mg, twice per day
   </p>
   <p className="w-[360px] h-[22px] absolute left-[30px] top-[220px] text-[10px] font-medium text-left text-[#656565]">
-    Paracetamol, 300mg, twice per day
+    Cipla Antibiotic, 500mg, once a day
   </p>
   <p className="w-[117px] h-[21px] absolute left-[30px] top-[498px] text-[10px] font-medium text-left text-[#349899]">
     Signature Verification
