@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --watch src --exec 'node --loader @esbuild-kit/esm-loader src/index.ts'",
+    "dev": "node --loader @esbuild-kit/esm-loader src/index.ts",
     "gql:gen": "bash ./scripts/download-sch.sh"
   },
   "keywords": [],
