@@ -8,7 +8,8 @@
   "scripts": {
     "build": "turbo build",
     "start": "turbo start",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "dev" : "turbo dev"
   },
   "author": {
     "name": "Team Innov8rs"

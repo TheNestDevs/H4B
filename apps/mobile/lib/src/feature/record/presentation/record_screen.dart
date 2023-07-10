@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/theme/theme.dart';
 import 'provider/record_provider.dart';
 
 class RecordScreen extends ConsumerWidget {
   const RecordScreen({super.key});
+
+  Future<void> viewPrescription(String id, WidgetRef ref) async {
+    await launchUrl(
+      Uri.parse(
+          "https://h4-b-prescription-interface.vercel.app/0q213if2q08e34h8f"),
+      mode: LaunchMode.externalApplication,
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -55,7 +64,7 @@ class RecordScreen extends ConsumerWidget {
                   tileColor: Colors.transparent,
                   onTap: () => {},
                   trailing: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => viewPrescription('', ref),
                     child: Text(
                       'View Prescription',
                       style: AppTheme.theme.textTheme.displaySmall,

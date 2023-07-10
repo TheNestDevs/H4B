@@ -11,6 +11,7 @@
             "outputs": ["**/.eslintcache"]
         },
         "test": {},
-        "start": {}
+        "start": {},
+        "dev": {}
     }
 }
