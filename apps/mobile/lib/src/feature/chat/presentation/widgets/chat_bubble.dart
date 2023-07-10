@@ -23,6 +23,7 @@ class ChatBubble extends ConsumerWidget {
           left: 16,
           right: 16,
           bottom: 20,
+          top: 20,
         ),
         constraints: BoxConstraints(maxWidth: 260.w),
         padding: const EdgeInsets.all(16),
