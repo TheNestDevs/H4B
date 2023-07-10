@@ -44,6 +44,8 @@ dependencies:
   dio: ^5.2.1+1
   equatable: ^2.0.5
   url_launcher: ^6.1.12
+  agora_rtc_engine: ^6.2.1
+  permission_handler: ^10.4.2
 
 dev_dependencies:
   flutter_test:
