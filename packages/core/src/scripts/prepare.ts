@@ -27,14 +27,14 @@ class EnpCript {
                 silent: false,
             },
         );
-        shell.exec(
-            `
-            ssh-keygen -e -m PEM -f ${this.keystoreLocation}/${keyname}.key > ${this.keystoreLocation}/${keyname}.key.pub
-        `,
-            {
-                silent: false,
-            },
-        );
+        // shell.exec(
+        //     `
+        //     ssh-keygen -e -m PEM -f ${this.keystoreLocation}/${keyname}.key > ${this.keystoreLocation}/${keyname}.key.pub
+        // `,
+        //     {
+        //         silent: false,
+        //     },
+        // );
 
         return "Key generated successfully.";
     }
@@ -59,6 +59,8 @@ class EnpCript {
     }
 
     public decryptMessage(message: string, keyname: string) {
+        message = message.replace(/\n/g, "");
+        console.log(message);
         // Check if keyname exists
         if (!shell.test("-e", `${this.keystoreLocation}/${keyname}.key`)) {
             return;
@@ -78,6 +80,44 @@ class EnpCript {
             throw new Error(decData.stderr);
         }
         return decData.stdout;
+    }
+
+    public getkeyFingerprint(keyname: string) {
+        // Check if keyname exists
+        if (!shell.test("-e", `${this.keystoreLocation}/${keyname}.key`)) {
+            return;
+        }
+
+        // Get fingerprint
+        const fingerprint = shell.exec(
+            `
+            ssh-keygen -lf ${this.keystoreLocation}/${keyname}.pub
+        `,
+            {
+                silent: false,
+            },
+        );
+
+        return fingerprint.stdout;
+    }
+
+    public getkeyFingerprintPrivate(keyname: string) {
+        // Check if keyname exists
+        if (!shell.test("-e", `${this.keystoreLocation}/${keyname}.key`)) {
+            return;
+        }
+
+        // Get fingerprint
+        const fingerprint = shell.exec(
+            `
+            ssh-keygen -lf ${this.keystoreLocation}/${keyname}.key
+        `,
+            {
+                silent: false,
+            },
+        );
+
+        return fingerprint.stdout;
     }
 }
 

@@ -1,0 +1,12 @@
+{
+    "$schema": "https://json.schemastore.org/eslintrc",
+    "extends": ["next/core-web-vitals", "@bravo68web/eslint-config/code-style"],
+    "rules": {
+        "@next/next/no-img-element": "off",
+        "react/button-has-type": "off",
+        "react/no-array-index-key": "off",
+        "tailwindcss/no-custom-classname": "off",
+        "unicorn/filename-case": "off",
+        "unicorn/prefer-logical-operator-over-ternary": "off"
+    }
+}
